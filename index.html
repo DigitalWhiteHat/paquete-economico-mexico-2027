@@ -1,282 +1,356 @@
 <title>Paquete Económico México 2027</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;800;900&family=Big+Shoulders+Display:wght@600;700;800;900&family=Newsreader:ital,wght@0,400;0,500;0,600;1,400;1,500&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
 <style>
   :root{
-    --masthead:#000000; --masthead-text:#FFFFFF;
-    --bg:#FAFAFA; --surface:#FFFFFF; --border:#E5E5E5;
-    --text:#191919; --text-dim:#6B6B6B;
-    --accent:#1F9A46; --up:#36BF58; --down:#D6392E;
-    --mx:#A34E39;
-    --font-body:-apple-system,BlinkMacSystemFont,'Helvetica Neue','Segoe UI',Arial,sans-serif;
-    --font-mono:'Courier New',ui-monospace,'SF Mono',Consolas,monospace;
+    --ink:#16211C; --ink-soft:#47564D; --ink-faint:#6E7D73;
+    --paper:#F1F4EF; --surface:#FFFFFF; --surface-2:#E9EDE6; --border:#D5DDD1;
+    --brand:#14616B; --brand-strong:#0E4A52; --brand-tint:#E1EEEC;
+    --good:#2E7D5B; --good-tint:#E3F0E9;
+    --warn:#AD7A22; --warn-tint:#F5ECDA;
+    --bad:#AE4238; --bad-tint:#F5E4E1;
+    --mx:#B85B44; --mx-tint:#F3E1DB;
+    --shadow:0 1px 2px rgba(20,30,25,0.06), 0 8px 24px -12px rgba(20,30,25,0.18);
+    --font-display:'Big Shoulders Display','Arial Narrow',sans-serif;
+    --font-body:'Newsreader','Iowan Old Style',Georgia,serif;
+    --font-mono:'IBM Plex Mono',ui-monospace,'SF Mono',Menlo,monospace;
+    --font-brand:'Archivo','Helvetica Neue',Helvetica,Arial,sans-serif;
+    --bb-black:#0B0B0C; --bb-green:#0F6B4C; --bb-green-bright:#22B37A;
+    --bb-text-dim:#9AA0A6;
   }
   @media (prefers-color-scheme: dark){
     :root:not([data-theme="light"]){
-      --bg:#121212; --surface:#181818; --border:#2E2E2E;
-      --text:#F2F2F2; --text-dim:#9A9A9A;
-      --accent:#36BF58; --up:#36BF58; --down:#F0524A;
-      --mx:#D08267;
+      --ink:#E9EFE9; --ink-soft:#B6C4BC; --ink-faint:#8A988F;
+      --paper:#10150F; --surface:#181F19; --surface-2:#1E261F; --border:#2B352C;
+      --brand:#59C2B8; --brand-strong:#7FD4CB; --brand-tint:#153331;
+      --good:#5CBB90; --good-tint:#163625;
+      --warn:#E0AC53; --warn-tint:#3A2C14;
+      --bad:#E58A7C; --bad-tint:#3B211D;
+      --mx:#E0917A; --mx-tint:#3A2420;
+      --shadow:0 1px 2px rgba(0,0,0,0.3), 0 8px 24px -12px rgba(0,0,0,0.5);
     }
   }
   :root[data-theme="dark"]{
-    --bg:#121212; --surface:#181818; --border:#2E2E2E;
-    --text:#F2F2F2; --text-dim:#9A9A9A;
-    --accent:#36BF58; --up:#36BF58; --down:#F0524A;
-    --mx:#D08267;
-  }
-  :root[data-theme="light"]{
-    --bg:#FAFAFA; --surface:#FFFFFF; --border:#E5E5E5;
-    --text:#191919; --text-dim:#6B6B6B;
-    --accent:#1F9A46; --up:#36BF58; --down:#D6392E;
-    --mx:#A34E39;
+    --ink:#E9EFE9; --ink-soft:#B6C4BC; --ink-faint:#8A988F;
+    --paper:#10150F; --surface:#181F19; --surface-2:#1E261F; --border:#2B352C;
+    --brand:#59C2B8; --brand-strong:#7FD4CB; --brand-tint:#153331;
+    --good:#5CBB90; --good-tint:#163625;
+    --warn:#E0AC53; --warn-tint:#3A2C14;
+    --bad:#E58A7C; --bad-tint:#3B211D;
+    --mx:#E0917A; --mx-tint:#3A2420;
+    --shadow:0 1px 2px rgba(0,0,0,0.3), 0 8px 24px -12px rgba(0,0,0,0.5);
   }
 
-  *{box-sizing:border-box;}
-  body{background:var(--bg);color:var(--text);font-family:var(--font-body);line-height:1.55;-webkit-font-smoothing:antialiased;}
-  h1,h2,h3{font-family:var(--font-body);text-wrap:balance;font-weight:800;letter-spacing:-.01em;}
-  a{color:var(--accent);}
-  .num{font-family:var(--font-mono);font-variant-numeric:tabular-nums;}
+  *,*::before,*::after{box-sizing:border-box;}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--font-body);font-size:1.0625rem;line-height:1.6;-webkit-font-smoothing:antialiased;}
+  a{color:var(--brand);text-decoration-thickness:1px;text-underline-offset:2px;}
+  h1,h2,h3,h4{font-family:var(--font-display);text-wrap:balance;margin:0;color:var(--ink);letter-spacing:0.01em;}
+  .eyebrow{font-family:var(--font-mono);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--brand);font-weight:600;}
+  .wrap{max-width:1100px;margin:0 auto;padding:0 clamp(1.1rem,3vw,2.5rem);}
 
-  .masthead{background:var(--masthead);color:var(--masthead-text);padding:14px 20px;}
-  .masthead-inner{max-width:760px;margin:0 auto;display:flex;align-items:center;gap:10px;}
-  .wordmark{font-weight:800;font-size:15px;letter-spacing:.02em;white-space:nowrap;}
-  .wordmark .linea{color:var(--up);}
-  .desk{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--mx);border:1px solid var(--mx);border-radius:3px;padding:2px 7px;}
-  .masthead-rule{height:3px;background:var(--up);}
+  .bb-masthead{background:var(--bb-black);border-bottom:3px solid var(--bb-green);}
+  .bb-masthead-inner{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding-block:.65rem;}
+  .bb-doclabel{font-family:var(--font-mono);font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--bb-text-dim);}
+  .bb-wordmark{font-family:var(--font-brand);font-weight:800;font-size:1.05rem;letter-spacing:-0.01em;color:#fff;white-space:nowrap;}
+  .bb-wordmark em{font-style:normal;color:var(--bb-green-bright);}
 
-  .wrap{max-width:760px;margin:0 auto;padding:30px 20px 80px;}
+  .site-header{border-bottom:1px solid var(--border);padding-block:clamp(2.2rem,4vw,3.4rem) 2rem;background:radial-gradient(1200px 400px at 8% -10%,var(--brand-tint),transparent 60%),var(--paper);}
+  .site-header h1{font-size:clamp(2.4rem,2rem + 2.6vw,4rem);font-weight:900;line-height:.98;margin-top:.5rem;}
+  .site-header h1 em{font-style:normal;color:var(--brand);}
+  .dek{max-width:64ch;font-size:1.18rem;color:var(--ink-soft);margin-top:1rem;font-weight:400;}
+  .meta-row{display:flex;flex-wrap:wrap;gap:.5rem 1.6rem;margin-top:1.6rem;font-family:var(--font-mono);font-size:.82rem;color:var(--ink-faint);}
+  .meta-row strong{color:var(--ink-soft);font-weight:600;}
+  .tag{display:inline-flex;align-items:center;gap:.35em;font-family:var(--font-mono);font-size:.72rem;font-weight:600;padding:.22em .6em;border-radius:99px;letter-spacing:.02em;}
+  .tag::before{content:"";width:.5em;height:.5em;border-radius:50%;background:currentColor;}
+  .tag.mx{background:var(--mx-tint);color:var(--mx);}
 
-  h1.title{font-size:clamp(24px,4.6vw,32px);margin:0 0 12px;}
-  p.subtitle{color:var(--text-dim);font-size:15px;max-width:66ch;margin:0 0 6px;}
-  p.epistemic{color:var(--text-dim);font-size:12.5px;max-width:66ch;margin:0 0 22px;font-style:italic;}
+  .stat-strip{margin-top:2.2rem;display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:1px;background:var(--border);border:1px solid var(--border);border-radius:10px;overflow:hidden;}
+  .stat{background:var(--surface);padding:1.1rem 1.2rem;}
+  .stat .n{font-family:var(--font-mono);font-variant-numeric:tabular-nums;font-size:1.6rem;font-weight:600;color:var(--brand-strong);display:block;}
+  .stat .l{font-size:.8rem;color:var(--ink-faint);margin-top:.15rem;line-height:1.35;}
 
-  .factline{font-size:13.5px;color:var(--text-dim);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:10px 0;margin-bottom:10px;}
-  .factline b{color:var(--text);font-weight:700;}
-  .factline .sep{margin:0 8px;opacity:.4;}
+  .layout{display:grid;grid-template-columns:190px minmax(0,1fr);gap:clamp(1.5rem,3vw,3.5rem);padding-block:clamp(2rem,4vw,3rem) 5rem;align-items:start;}
+  @media (max-width:860px){.layout{grid-template-columns:1fr;}}
+  nav.toc{position:sticky;top:1.5rem;display:flex;flex-direction:column;gap:.15rem;font-family:var(--font-mono);font-size:.82rem;border-left:1px solid var(--border);padding-left:1rem;}
+  @media (max-width:860px){nav.toc{position:static;flex-direction:row;overflow-x:auto;border-left:none;border-bottom:1px solid var(--border);padding:0 0 .9rem 0;gap:1.1rem;}}
+  nav.toc .navlink{color:var(--ink-faint);text-decoration:none;padding:.3rem 0;border-bottom:1px solid transparent;}
+  nav.toc .navlink:hover{color:var(--brand);}
 
-  nav.jump{display:flex;gap:16px;flex-wrap:wrap;font-size:12.5px;margin-bottom:34px;}
-  nav.jump a{color:var(--text-dim);text-decoration:none;border-bottom:1px solid var(--border);padding-bottom:2px;font-weight:600;}
-  nav.jump a:hover{color:var(--accent);border-color:var(--accent);}
+  main{min-width:0;}
+  section{padding-block:2.6rem;border-bottom:1px solid var(--border);scroll-margin-top:1rem;}
+  section:last-of-type{border-bottom:none;}
+  .section-head{margin-bottom:1.2rem;}
+  .section-num{font-family:var(--font-mono);font-size:.78rem;color:var(--brand);letter-spacing:.08em;}
+  h2{font-size:clamp(1.6rem,1.35rem + 1vw,2.1rem);font-weight:800;margin-top:.3rem;}
+  .prose{max-width:70ch;}
+  .prose p{margin:0 0 1rem 0;}
+  .prose p.lede{font-size:1.1rem;color:var(--ink-soft);}
+  .prose strong{color:var(--ink);font-weight:600;}
 
-  h2.section{font-size:21px;margin:0 0 4px;padding-top:8px;scroll-margin-top:16px;border-bottom:3px solid var(--text);display:inline-block;padding-bottom:4px;}
-  section.block{margin-bottom:52px;}
-  p.section-lead{color:var(--text-dim);font-size:14px;margin:14px 0 20px;max-width:64ch;}
+  .rule-box{display:flex;gap:.9rem;border-left:3px solid var(--bad);background:var(--bad-tint);padding:.9rem 1.1rem;border-radius:0 8px 8px 0;margin:1.3rem 0;font-size:.98rem;}
+  .rule-box.good{border-left-color:var(--good);background:var(--good-tint);}
+  .rule-box.warn{border-left-color:var(--warn);background:var(--warn-tint);}
+  .rule-box strong{display:block;margin-bottom:.2rem;}
 
-  .topic{padding:16px 0;border-top:1px solid var(--border);}
-  .topic:last-of-type{border-bottom:1px solid var(--border);}
-  .topic h3{font-size:16.5px;margin:0 0 6px;line-height:1.35;font-weight:700;}
-  .topic p{font-size:14px;margin:0;max-width:66ch;color:var(--text);}
-  .topic p .dim{color:var(--text-dim);}
-  .tag{display:inline-block;font-size:10.5px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--text-dim);border:1px solid var(--border);border-radius:3px;padding:1px 6px;margin-right:6px;vertical-align:middle;}
-  .tag.alta{color:var(--down);border-color:var(--down);}
-  .tag.up{color:var(--up);border-color:var(--up);}
+  .topic{background:var(--surface);border:1px solid var(--border);border-left:4px solid var(--brand);border-radius:10px;padding:1.15rem 1.35rem;margin:1rem 0;box-shadow:var(--shadow);}
+  .topic.alta{border-left-color:var(--bad);}
+  .topic h3{font-family:var(--font-body);font-weight:600;font-size:1.14rem;line-height:1.3;margin:.3rem 0 .5rem;color:var(--ink);}
+  .topic p{margin:0;color:var(--ink-soft);font-size:.98rem;}
+  .topic p .dim{color:var(--ink-faint);}
 
-  table{border-collapse:collapse;width:100%;font-size:13.5px;margin:14px 0 18px;}
-  caption{text-align:left;font-size:11px;text-transform:uppercase;letter-spacing:.05em;color:var(--text-dim);margin-bottom:6px;caption-side:top;font-weight:700;}
-  .tbl-wrap{overflow-x:auto;}
-  th,td{text-align:left;padding:7px 10px 7px 0;border-bottom:1px solid var(--border);vertical-align:top;}
-  th{font-size:10.5px;text-transform:uppercase;letter-spacing:.05em;color:var(--text-dim);font-weight:700;}
-  td.num,th.num{font-family:var(--font-mono);}
+  .pill{display:inline-block;font-family:var(--font-mono);font-size:.7rem;font-weight:600;padding:.18em .55em;border-radius:5px;white-space:nowrap;margin-right:.3em;}
+  .pill.search{background:var(--good-tint);color:var(--good);}
+  .pill.discover{background:var(--mx-tint);color:var(--mx);}
+  .pill.news{background:var(--surface-2);color:var(--ink-soft);border:1px solid var(--border);}
+  .pill.alta{background:var(--bad-tint);color:var(--bad);}
+  .pill.media{background:var(--warn-tint);color:var(--warn);}
 
-  .note{font-size:13px;color:var(--text-dim);border-left:2px solid var(--border);padding-left:12px;margin:16px 0;}
+  .table-wrap{overflow-x:auto;margin:1.3rem 0;border:1px solid var(--border);border-radius:10px;}
+  table{border-collapse:collapse;width:100%;min-width:600px;font-size:.9rem;}
+  caption{caption-side:top;text-align:left;font-family:var(--font-mono);font-size:.72rem;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-faint);font-weight:600;background:var(--surface-2);padding:.6rem .9rem;}
+  thead th{text-align:left;font-family:var(--font-mono);font-size:.72rem;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-faint);font-weight:600;background:var(--surface-2);padding:.65rem .9rem;white-space:nowrap;}
+  tbody td{padding:.65rem .9rem;border-top:1px solid var(--border);vertical-align:top;color:var(--ink-soft);}
+  tbody tr:hover td{background:var(--surface-2);}
+  td.num,th.num{font-family:var(--font-mono);font-variant-numeric:tabular-nums;color:var(--ink);}
 
-  footer{margin-top:44px;padding-top:16px;border-top:1px solid var(--border);color:var(--text-dim);font-size:12.5px;}
-  footer ul{margin:8px 0 0;padding-left:18px;}
-  footer li{margin-bottom:4px;}
+  .note{font-size:.92rem;color:var(--ink-faint);border-left:2px solid var(--border);padding-left:1rem;margin:1.2rem 0;}
+
+  footer{padding:2.2rem 0 4rem;color:var(--ink-faint);font-size:.85rem;}
+  footer .prose{max-width:70ch;}
+  footer a{color:var(--ink-soft);}
+  footer ul{margin:.5rem 0 0;padding-left:1.2rem;}
+  footer li{margin-bottom:.3rem;}
+  ::selection{background:var(--brand);color:#fff;}
 </style>
 
-<div class="masthead">
-  <div class="masthead-inner">
-    <span class="wordmark">BLOOMBERG <span class="linea">LÍNEA</span></span>
-    <span class="desk">México</span>
+<div class="bb-masthead">
+  <div class="wrap bb-masthead-inner">
+    <span class="bb-doclabel">Documento interno · uso editorial</span>
+    <span class="bb-wordmark">Bloomberg <em>Línea</em></span>
   </div>
 </div>
-<div class="masthead-rule"></div>
 
-<div class="wrap">
-
-  <h1 class="title">Paquete Económico 2027 — temas para cubrir</h1>
-  <p class="subtitle">Antes, durante y después de la entrega del 8‑sep‑2026, con lo que investigué en 8 medios mexicanos (ciclo 2026 completo + lo que ya circula esta semana para 2027).</p>
-  <p class="epistemic">Bloomberg Línea no tiene cobertura propia previa de este tema exacto (el ciclo del año pasado quedó fuera de los datos disponibles) — los temas se apoyan en lo que sí funciona en entidades relacionadas (Pemex, INE) y en lo que le ha funcionado a la competencia.</p>
-
-  <div class="factline">Entrega a Congreso: <b>martes 8‑sep</b><span class="sep">·</span>Presentación pública: <b>miércoles 9‑sep</b><span class="sep">·</span>Hora sin confirmar — en 2025 se retrasó hasta pasada medianoche<span class="sep">·</span>En juego: grado de inversión, México ya a un escalón del bono basura</div>
-
-  <nav class="jump"><a href="#antes">Antes</a><a href="#durante">Durante</a><a href="#despues">Después</a><a href="#competencia">Competencia</a></nav>
-
-  <!-- ANTES -->
-  <section class="block" id="antes">
-    <h2 class="section">Antes</h2>
-    <p class="section-lead">Hoy 3‑sep hasta el lunes 7‑sep — 7 temas, todos publicables esta semana, ninguno necesita esperar al 8‑sep.</p>
-
-    <div class="topic">
-      <h3><span class="tag alta">Search · Alta</span>Paquete Económico 2027 "responsable": qué promete Sheinbaum y qué le falta según los analistas</h3>
-      <p>La ficha genérica "qué es y cuándo se presenta" ya la cubren al menos 7 medios esta semana — saturada. El ángulo que Google no responde solo es la tensión real: Sheinbaum promete consolidación "responsable" (Excélsior, 2‑sep) mientras el mercado desconfía de la meta de déficit —<span class="dim"> 3,5% oficial vs. 3,7% que calcula Citi y 4,3% BNP Paribas (Expansión, 2‑sep).</span></p>
+<header class="site-header">
+  <div class="wrap">
+    <span class="eyebrow">Cobertura editorial · México</span>
+    <h1>Paquete Económico <em>2027</em></h1>
+    <p class="dek">Temas para antes, durante y después de la entrega del 8 de septiembre — con investigación real de qué funcionó en 8 medios mexicanos el ciclo pasado y qué ya circula esta semana para 2027.</p>
+    <div class="meta-row">
+      <span><strong>Autor:</strong> Edwin Lozada</span>
+      <span><strong>Fecha:</strong> 4 de septiembre de 2026</span>
+      <span><strong>Alcance:</strong></span>
+      <span class="tag mx">México</span>
     </div>
-
-    <div class="topic">
-      <h3><span class="tag alta">Search · Alta</span>Presupuesto 2027: cuánto del gasto público va a los programas del Bienestar</h3>
-      <p>Es el término de mayor volumen de búsqueda de todo este ejercicio (942.630/mes en variantes, muy por encima de "paquete económico") — pero México tiene vetado el contenido tipo bono/servicio ("cómo cobrar"). La salida es cubrirlo como cifra de presupuesto: Pensión Bienestar Adultos Mayores pasa de $526.508 a $547.523 mdp (+3,99%), total de programas prioritarios $867.872 mdp (+3,84%) — <a href="https://www.eluniversal.com.mx/nacion/becas-y-pension-de-adultos-mayores-proyecta-un-presupuesto-de-867-mil-872-mdp-para-2027-estos-son-los-montos-solicitados/" target="_blank" rel="noopener">El Universal</a>. <span class="dim">Falta que Jimena confirme el encuadre — el año pasado El Financiero sí lo hizo en formato servicio, es justo lo que hay que evitar.</span></p>
+    <div class="stat-strip">
+      <div class="stat"><span class="n">8‑sep</span><span class="l">entrega a Congreso — presentación pública el 9‑sep</span></div>
+      <div class="stat"><span class="n">942.630</span><span class="l">búsquedas/mes de "pensión bienestar" — el mayor volumen medido, el más restringido por el veto editorial</span></div>
+      <div class="stat"><span class="n">3,5%</span><span class="l">meta oficial de déficit 2027 — el mercado calcula hasta 4,3% (BNP Paribas)</span></div>
+      <div class="stat"><span class="n">27‑dic</span><span class="l">cuándo se definieron los precios reales del IEPS en 2026 — no el día de la entrega</span></div>
     </div>
+  </div>
+</header>
 
-    <div class="topic">
-      <h3><span class="tag alta">Search · Alta</span>Qué es la "trazabilidad del IEPS" a la gasolina que anunció Sheinbaum contra el huachicol fiscal</h3>
-      <p>Corrige un supuesto de la reunión: no es un alza al precio de la gasolina, es un mecanismo contra el contrabando de combustible, y ya lo confirmó Sheinbaum el 3‑sep — <a href="https://www.excelsior.com.mx/nacional/van-contra-huachicol-fiscal-sheinbaum-anuncia-trazabilidad-ieps-combustibles" target="_blank" rel="noopener">Excélsior</a>. Es hecho, no especulación. <span class="dim">"Huachicol fiscal" tiene 6.600 búsquedas/mes de base (el escándalo de hace un año), en declive — esta noticia puede reactivarlo.</span></p>
-    </div>
+<div class="wrap layout">
+  <nav class="toc" aria-label="Contenido del documento">
+    <a class="navlink" href="#antes">Antes</a>
+    <a class="navlink" href="#durante">Durante</a>
+    <a class="navlink" href="#despues">Después</a>
+    <a class="navlink" href="#competencia">Competencia</a>
+  </nav>
 
-    <div class="topic">
-      <h3><span class="tag">Search</span>Impuesto a la cerveza en 2027: la propuesta de 60 centavos a un peso que un diputado se retractó de confirmar</h3>
-      <p>Historia real de esta semana con arco completo: un diputado de Morena filtró la cifra el 2‑sep (~$6.500 mdp de recaudación) y se retractó el 3‑sep ("no existe acuerdo alguno") mientras Sheinbaum "no descarta, pero pide esperar". <span class="dim">Entidad = Congreso, no Hacienda, para no adjudicárselo al gobierno.</span></p>
-    </div>
+  <main id="contenido">
 
-    <div class="topic">
-      <h3><span class="tag">Search</span>¿Subirá el IEPS a la comida chatarra en 2027? La propuesta de pasar de 8% a 20%</h3>
-      <p>Mismo tipo de historia que la cerveza, ángulo distinto: sopas, salsas y botanas con alta densidad calórica — <a href="https://potosinoticias.com/2026/09/01/buscan-elevar-de-8-a-20-el-ieps-a-la-comida-chatarra-rumbo-al-paquete-economico-2027/" target="_blank" rel="noopener">Potosinoticias, 1‑sep</a>.</p>
-    </div>
+    <section id="antes">
+      <div class="section-head">
+        <span class="section-num">01</span>
+        <h2>Antes</h2>
+      </div>
+      <div class="prose">
+        <p class="lede">Hoy 3‑sep hasta el lunes 7‑sep — 7 temas, todos publicables esta semana, ninguno necesita esperar al 8‑sep.</p>
+        <p style="font-size:.92rem;color:var(--ink-faint);"><em>Bloomberg Línea no tiene cobertura propia previa de este tema exacto — el ciclo del año pasado quedó fuera de los datos disponibles. Los temas se apoyan en entidades relacionadas ya medidas (Pemex, INE) y en lo que le ha funcionado a la competencia.</em></p>
+      </div>
 
-    <div class="topic">
-      <h3><span class="tag">News</span>México alcanza récord de recaudación tributaria antes del paquete económico 2027</h3>
-      <p>Dato ya confirmado por la SHCP: 15,6% del PIB, el más alto registrado — <a href="https://www.jornada.com.mx/2026/08/30/economia/hacienda-buscara-balancear-la-base-tributaria-para-2027-recaudaciones-alcanzaron-record-de-156-del-pib" target="_blank" rel="noopener">La Jornada, 30‑ago</a>. Explicador de contexto, no depende de nada que pase el 8‑sep.</p>
-    </div>
+      <div class="topic alta">
+        <h3><span class="pill search">Search</span><span class="pill alta">Alta</span>Paquete Económico 2027 "responsable": qué promete Sheinbaum y qué le falta según los analistas</h3>
+        <p>La ficha genérica "qué es y cuándo se presenta" ya la cubren al menos 7 medios esta semana — saturada. El ángulo que Google no responde solo es la tensión real: Sheinbaum promete consolidación "responsable" (Excélsior, 2‑sep) mientras el mercado desconfía de la meta de déficit — <span class="dim">3,5% oficial vs. 3,7% que calcula Citi y 4,3% BNP Paribas (Expansión, 2‑sep).</span></p>
+      </div>
 
-    <div class="topic">
-      <h3><span class="tag">News</span>Por qué México sigue perdiendo grado de inversión: lo que dicen Fitch, Moody's y S&amp;P antes del paquete 2027</h3>
-      <p>BL ya tiene la nota base de mayo‑2026 sobre el último escalón de grado de inversión (Fitch BBB‑, Moody's Baa3) — actualizarla con el contexto del paquete, no reescribirla de cero.</p>
-    </div>
+      <div class="topic alta">
+        <h3><span class="pill search">Search</span><span class="pill alta">Alta</span>Presupuesto 2027: cuánto del gasto público va a los programas del Bienestar</h3>
+        <p>Es el término de mayor volumen de todo este ejercicio (942.630/mes en variantes) — pero México tiene vetado el contenido tipo bono/servicio ("cómo cobrar"). La salida es cubrirlo como cifra de presupuesto: Pensión Bienestar Adultos Mayores pasa de $526.508 a $547.523 mdp (+3,99%), total de programas prioritarios $867.872 mdp (+3,84%) — <a href="https://www.eluniversal.com.mx/nacion/becas-y-pension-de-adultos-mayores-proyecta-un-presupuesto-de-867-mil-872-mdp-para-2027-estos-son-los-montos-solicitados/" target="_blank" rel="noopener">El Universal</a>. <span class="dim">Falta que Jimena confirme el encuadre.</span></p>
+      </div>
 
-    <p class="note">Otro ángulo real de esta semana sin volumen de búsqueda: reforma contra la elusión fiscal de grandes empresas vía ISR — La Jornada, 2‑sep. Sirve para News/Cherry, no compite por tráfico.</p>
-  </section>
+      <div class="topic alta">
+        <h3><span class="pill search">Search</span><span class="pill alta">Alta</span>Qué es la "trazabilidad del IEPS" a la gasolina que anunció Sheinbaum contra el huachicol fiscal</h3>
+        <p>Corrige un supuesto de la reunión: no es un alza al precio de la gasolina, es un mecanismo contra el contrabando de combustible, ya confirmado el 3‑sep — <a href="https://www.excelsior.com.mx/nacional/van-contra-huachicol-fiscal-sheinbaum-anuncia-trazabilidad-ieps-combustibles" target="_blank" rel="noopener">Excélsior</a>. <span class="dim">"Huachicol fiscal" tiene 6.600 búsquedas/mes de base, en declive — esta noticia puede reactivarlo.</span></p>
+      </div>
 
-  <!-- DURANTE -->
-  <section class="block" id="durante">
-    <h2 class="section">Durante</h2>
-    <p class="section-lead">Martes 8‑sep — quién cubre qué, un riesgo real de horario, y una sola pieza nueva que arma el mismo día.</p>
+      <div class="topic">
+        <h3><span class="pill search">Search</span>Impuesto a la cerveza en 2027: la propuesta de 60 centavos a un peso que un diputado se retractó de confirmar</h3>
+        <p>Un diputado de Morena filtró la cifra el 2‑sep (~$6.500 mdp) y se retractó el 3‑sep ("no existe acuerdo alguno") mientras Sheinbaum "no descarta, pero pide esperar". <span class="dim">Entidad = Congreso, no Hacienda.</span></p>
+      </div>
 
-    <div class="tbl-wrap">
-      <table>
-        <caption>Notas de arranque</caption>
-        <thead><tr><th>Nota</th><th>Responsable</th><th>Canal</th></tr></thead>
-        <tbody>
-          <tr><td>Consolidación fiscal / déficit</td><td>Zenyazen Flores</td><td>Search + News</td></tr>
-          <tr><td>Marco macro (PIB, dólar, inflación, petróleo, tasa)</td><td>Italia López</td><td>Discover — no Search: Banxico/dólar tiene el peor ratio del portal en Search (0,01, 53 notas gastadas ahí), pero dólar/LatAm es el clúster #1 de Discover</td></tr>
-          <tr><td>Pemex — ¿se sostiene el apoyo en 2027?</td><td>Arturo Solís</td><td>Search + News — ya es tendencia esta semana en el sitio</td></tr>
-        </tbody>
-      </table>
-    </div>
+      <div class="topic">
+        <h3><span class="pill search">Search</span>¿Subirá el IEPS a la comida chatarra en 2027? La propuesta de pasar de 8% a 20%</h3>
+        <p>Mismo tipo de historia que la cerveza, ángulo distinto: sopas, salsas y botanas con alta densidad calórica — <a href="https://potosinoticias.com/2026/09/01/buscan-elevar-de-8-a-20-el-ieps-a-la-comida-chatarra-rumbo-al-paquete-economico-2027/" target="_blank" rel="noopener">Potosinoticias, 1‑sep</a>.</p>
+      </div>
 
-    <p class="note"><b style="color:var(--text)">Riesgo de horario:</b> en 2025 el evento estaba previsto a las 6pm y se retrasó hasta pasada la medianoche por "problemas técnicos" — justo lo que preocupaba a Valentina por el huso horario. Guardia y video listos antes de las 6pm.</p>
+      <div class="topic">
+        <h3><span class="pill news">News</span>México alcanza récord de recaudación tributaria antes del paquete económico 2027</h3>
+        <p>Dato ya confirmado por la SHCP: 15,6% del PIB, el más alto registrado — <a href="https://www.jornada.com.mx/2026/08/30/economia/hacienda-buscara-balancear-la-base-tributaria-para-2027-recaudaciones-alcanzaron-record-de-156-del-pib" target="_blank" rel="noopener">La Jornada, 30‑ago</a>.</p>
+      </div>
 
-    <div class="topic">
-      <h3><span class="tag alta">Search · Alta</span>Qué productos pagarán más impuestos con el paquete económico 2027 en México</h3>
-      <p>El año pasado esto (no una sola pieza suelta) fue el ángulo con más notas propias y más cruce entre medios de todo el ciclo: refrescos +87%, tabaco 160%→200%, apuestas 30%→50%, videojuegos — El Financiero, Infobae y El Universal lo cubrieron el mismo día. En cuanto Hacienda dé cifras reales de cerveza, comida chatarra y refrescos para 2027, consolidar en una sola nota.</p>
-    </div>
+      <div class="topic">
+        <h3><span class="pill news">News</span>Por qué México sigue perdiendo grado de inversión: lo que dicen Fitch, Moody's y S&amp;P antes del paquete 2027</h3>
+        <p>BL ya tiene la nota base de mayo‑2026 sobre el último escalón de grado de inversión — actualizarla con el contexto del paquete, no reescribirla de cero.</p>
+      </div>
 
-    <div class="topic">
-      <h3><span class="tag">Discover</span>Los países de América Latina en riesgo de perder el grado de inversión, según las calificadoras</h3>
-      <p>Reformula la nota de consolidación fiscal de Zenyazen para el formato de mayor techo del portal en Discover (país+cifra+comparación+fuente, mediana 1.531 clics — el doble que cualquier nota de un solo país, y casi nadie lo usa). <span class="dim">Falta confirmar calificación vigente de Colombia, Brasil y otros antes de publicar.</span></p>
-    </div>
+      <p class="note">Otro ángulo real sin volumen de búsqueda: reforma contra la elusión fiscal de grandes empresas vía ISR — La Jornada, 2‑sep. Sirve para News/Cherry, no compite por tráfico.</p>
+    </section>
 
-    <p class="note">Vigilar en vivo: en 2026, "eliminación de deducción fiscal al IPAB golpea a bancos" (El Financiero) fue retomado el mismo día por Bloomberg.com — si aparece un ángulo bancario equivalente, viaja fuera de México. Ningún medio de los 8 revisados usó calculadora o tracker interactivo — solo El Financiero con blog en vivo.</p>
-  </section>
+    <section id="durante">
+      <div class="section-head">
+        <span class="section-num">02</span>
+        <h2>Durante</h2>
+      </div>
+      <p class="prose lede">Martes 8‑sep — quién cubre qué, un riesgo real de horario, y una sola pieza nueva que arma el mismo día.</p>
 
-  <!-- DESPUÉS -->
-  <section class="block" id="despues">
-    <h2 class="section">Después</h2>
-    <p class="section-lead">9‑sep en adelante — lo más importante no es institucional, es cuánto le cuesta al mexicano promedio. Luego sigue en la mañanera, en octubre y en diciembre.</p>
+      <div class="table-wrap">
+        <table>
+          <caption>Notas de arranque</caption>
+          <thead><tr><th>Nota</th><th>Responsable</th><th>Canal</th></tr></thead>
+          <tbody>
+            <tr><td>Consolidación fiscal / déficit</td><td>Zenyazen Flores</td><td>Search + News</td></tr>
+            <tr><td>Marco macro (PIB, dólar, inflación, petróleo, tasa)</td><td>Italia López</td><td>Discover — no Search: Banxico/dólar tiene el peor ratio del portal en Search (0,01), pero dólar/LatAm es el clúster #1 de Discover</td></tr>
+            <tr><td>Pemex — ¿se sostiene el apoyo en 2027?</td><td>Arturo Solís</td><td>Search + News — ya es tendencia esta semana en el sitio</td></tr>
+          </tbody>
+        </table>
+      </div>
 
-    <div class="topic">
-      <h3><span class="tag alta">Search · Alta</span>Esto es lo que sube — y lo que no — con el paquete económico 2027</h3>
-      <p>Publicar 9‑sep con cifras ya confirmadas: consolidado claro de qué producto sube, cuánto, y qué no se tocó (cerveza, comida chatarra, refrescos, tabaco, gasolina). Es la continuación directa de la nota del 8‑sep, ahora con datos reales en vez de propuestos.</p>
-    </div>
+      <div class="rule-box warn"><span>⚠</span><div><strong>Riesgo de horario</strong> en 2025 el evento estaba previsto a las 6pm y se retrasó hasta pasada la medianoche por "problemas técnicos" — justo lo que preocupaba a Valentina por el huso horario. Guardia y video listos antes de las 6pm.</div></div>
 
-    <div class="topic">
-      <h3><span class="tag alta">Search · Alta</span>Precios actualizados 2027: cuánto pagarás por cerveza, refrescos y cigarros con el nuevo IEPS</h3>
-      <p>No es para el 9‑sep — es para cuando se publique la ley y las cuotas queden definitivas. En 2026 eso pasó hasta el 27‑diciembre: <a href="https://www.elfinanciero.com.mx/economia/2025/12/27/de-refrescos-a-museos-estos-son-los-impuestos-que-suben-de-precio-en-2026-y-pegaran-a-tu-cartera/" target="_blank" rel="noopener">El Financiero, "De refrescos a museos… pegarán a tu cartera"</a>, con precios reales por marca (cajetilla a $103‑106). Al menos 8 medios distintos hicieron su versión — es el formato de mayor consenso de todo el ciclo, más que el día de la entrega. <span class="dim">Agendar desde ahora para no perderlo en diciembre.</span></p>
-    </div>
+      <div class="topic alta">
+        <h3><span class="pill search">Search</span><span class="pill alta">Alta</span>Qué productos pagarán más impuestos con el paquete económico 2027 en México</h3>
+        <p>El año pasado esto (no una pieza suelta) fue el ángulo con más notas propias y más cruce entre medios de todo el ciclo: refrescos +87%, tabaco 160%→200%, apuestas 30%→50%, videojuegos — El Financiero, Infobae y El Universal lo cubrieron el mismo día. En cuanto Hacienda dé cifras reales de cerveza, comida chatarra y refrescos, consolidar en una sola nota.</p>
+      </div>
 
-    <div class="topic">
-      <h3><span class="tag">News</span>Bancos y sector privado reaccionan al paquete económico 2027: qué dicen sobre la disciplina fiscal</h3>
-      <p>Publicar 9‑sep — HSBC (5‑ago), BBVA/Banamex (patrón de 2026) y el CCE, que ya advirtió por "apretón fiscal" (Reforma), tienen postura previa citable sin esperar declaraciones nuevas.</p>
-    </div>
+      <div class="topic">
+        <h3><span class="pill discover">Discover</span>Los países de América Latina en riesgo de perder el grado de inversión, según las calificadoras</h3>
+        <p>Reformula la nota de consolidación fiscal de Zenyazen para el formato de mayor techo del portal en Discover (país+cifra+comparación+fuente, mediana 1.531 clics). <span class="dim">Falta confirmar calificación vigente de Colombia, Brasil y otros antes de publicar.</span></p>
+      </div>
 
-    <div class="topic">
-      <h3><span class="tag">News</span>¿Qué dicen Fitch, Moody's y S&amp;P del grado de inversión de México tras el paquete 2027?</h3>
-      <p>No forzar antes de que exista la nota real: en 2026, S&amp;P salió el mismo 8‑sep, Fitch tardó ~15 días (23‑sep). Tener el borrador listo, publicar cuando salga cada una.</p>
-    </div>
+      <p class="note">Vigilar en vivo: en 2026, "eliminación de deducción fiscal al IPAB golpea a bancos" (El Financiero) fue retomado el mismo día por Bloomberg.com. Ningún medio de los 8 revisados usó calculadora o tracker interactivo — solo El Financiero con blog en vivo.</p>
+    </section>
 
-    <div class="topic">
-      <h3><span class="tag">Search</span>Qué le espera al paquete económico 2027 en el Congreso: el calendario hasta su aprobación final</h3>
-      <p>Fecha ya previsible, se puede programar desde ahora — una nota por hito, no una sola genérica.</p>
-    </div>
+    <section id="despues">
+      <div class="section-head">
+        <span class="section-num">03</span>
+        <h2>Después</h2>
+      </div>
+      <p class="prose lede">9‑sep en adelante — lo más importante no es institucional, es cuánto le cuesta al mexicano promedio. Luego sigue en la mañanera, en octubre y en diciembre.</p>
 
-    <div class="tbl-wrap">
-      <table>
-        <caption>Calendario 2026 (referencia)</caption>
-        <thead><tr><th>Hito</th><th>Fecha</th></tr></thead>
-        <tbody>
-          <tr><td>Presentación pública / mañanera</td><td class="num">9‑sep</td></tr>
-          <tr><td>Aprobación en Diputados</td><td class="num">~17‑oct</td></tr>
-          <tr><td>Turno al Senado</td><td class="num">~19–21‑oct</td></tr>
-          <tr><td>Aprobación final</td><td class="num">~28‑oct</td></tr>
-          <tr><td>Publicación en Diario Oficial / cuotas definitivas</td><td class="num">~27‑dic</td></tr>
-        </tbody>
-      </table>
-    </div>
-  </section>
+      <div class="topic alta">
+        <h3><span class="pill search">Search</span><span class="pill alta">Alta</span>Esto es lo que sube — y lo que no — con el paquete económico 2027</h3>
+        <p>Publicar 9‑sep con cifras ya confirmadas: consolidado claro de qué producto sube, cuánto, y qué no se tocó (cerveza, comida chatarra, refrescos, tabaco, gasolina). Continuación directa de la nota del 8‑sep, ahora con datos reales.</p>
+      </div>
 
-  <!-- COMPETENCIA -->
-  <section class="block" id="competencia">
-    <h2 class="section">Competencia</h2>
-    <p class="section-lead">Qué hicieron 8 medios mexicanos en el ciclo 2026 completo, y qué ya están publicando para 2027.</p>
+      <div class="topic alta">
+        <h3><span class="pill search">Search</span><span class="pill alta">Alta</span>Precios actualizados 2027: cuánto pagarás por cerveza, refrescos y cigarros con el nuevo IEPS</h3>
+        <p>No es para el 9‑sep — es para cuando se publique la ley y las cuotas queden definitivas. En 2026 eso pasó hasta el 27‑diciembre: <a href="https://www.elfinanciero.com.mx/economia/2025/12/27/de-refrescos-a-museos-estos-son-los-impuestos-que-suben-de-precio-en-2026-y-pegaran-a-tu-cartera/" target="_blank" rel="noopener">El Financiero, "De refrescos a museos… pegarán a tu cartera"</a>, con precios reales por marca (cajetilla a $103‑106). Al menos 8 medios distintos hicieron su versión. <span class="dim">Agendar desde ahora para no perderlo en diciembre.</span></p>
+      </div>
 
-    <div class="tbl-wrap">
-      <table>
-        <caption>2026 — el ciclo comparable más reciente (2025 se entregó en noviembre por transición de gobierno)</caption>
-        <thead><tr><th>Medio</th><th>Momento</th><th>Titular</th><th>Fecha</th></tr></thead>
-        <tbody>
-          <tr><td>Expansión</td><td>Antes</td><td><a href="https://expansion.mx/economia/2025/09/07/que-es-el-paquete-economico-y-por-que-es-importarte" target="_blank" rel="noopener">¿Qué es el Paquete Económico 2026 y por qué es importante?</a></td><td class="num">7‑sep</td></tr>
-          <tr><td>El Financiero</td><td>Durante · blog en vivo</td><td><a href="https://www.elfinanciero.com.mx/economia/2025/09/08/paquete-economico-2026-presupuesto-sigue-la-entrega-al-congreso-hoy-en-vivo/" target="_blank" rel="noopener">Sheinbaum revela el Paquete Económico 2026… EN VIVO</a></td><td class="num">8‑sep</td></tr>
-          <tr><td>El Universal</td><td>Durante · Pemex</td><td><a href="https://www.eluniversal.com.mx/cartera/paquete-economico-2026-asigna-mega-presupuesto-para-pemex-es-un-aumento-en-terminos-reales-del-7/" target="_blank" rel="noopener">Asigna mega presupuesto para Pemex: +7% real</a></td><td class="num">8‑sep</td></tr>
-          <tr><td>El Financiero</td><td>Durante · impuestos saludables</td><td><a href="https://www.elfinanciero.com.mx/economia/2025/09/09/paquete-economico-2026-que-son-los-impuestos-saludables-aumento-de-precio-a-refrescos-cigarros-videojuegos-y-casas-de-apuestas/" target="_blank" rel="noopener">¿Qué son los nuevos "impuestos saludables"?</a></td><td class="num">9‑sep</td></tr>
-          <tr><td>El Financiero</td><td>Durante · social/servicio</td><td><a href="https://www.elfinanciero.com.mx/economia/2025/09/08/aumento-programas-y-pension-bienestar-paquete-economico-2026-de-cuanto-es-la-inversion/" target="_blank" rel="noopener">Pensión Bienestar: ¿cuánto dinero recibirá el programa?</a></td><td class="num">8‑sep</td></tr>
-          <tr><td>El Financiero</td><td>Después · precios/bolsillo</td><td><a href="https://www.elfinanciero.com.mx/economia/2025/12/27/de-refrescos-a-museos-estos-son-los-impuestos-que-suben-de-precio-en-2026-y-pegaran-a-tu-cartera/" target="_blank" rel="noopener">De refrescos a museos: pegarán a tu cartera</a> (+7 medios más hicieron su versión)</td><td class="num">27‑dic</td></tr>
-          <tr><td>El Financiero</td><td>Después · calificadoras</td><td><a href="https://www.elfinanciero.com.mx/economia/2025/09/23/paquete-economico-2026-fitch-preve-que-la-consolidacion-fiscal-sera-mas-dificil-sin-mas-ingresos/" target="_blank" rel="noopener">Fitch prevé que la consolidación fiscal será más difícil</a></td><td class="num">23‑sep</td></tr>
-          <tr><td>México Evalúa</td><td>Después · análisis</td><td><a href="https://numerosdeerario.mexicoevalua.org/2025/09/18/cobraran-mas-impuestos-en-2026-para-apoyar-a-pemex/" target="_blank" rel="noopener">Cobrarán más impuestos en 2026 para apoyar a Pemex</a> — conecta IEPS con el rescate a Pemex</td><td class="num">18‑sep</td></tr>
-          <tr><td>Expansión</td><td>Después · Congreso</td><td>Senado aprueba nuevos impuestos a refrescos, tabaco y videojuegos</td><td class="num">28‑oct</td></tr>
-        </tbody>
-      </table>
-    </div>
+      <div class="topic">
+        <h3><span class="pill news">News</span>Bancos y sector privado reaccionan al paquete económico 2027: qué dicen sobre la disciplina fiscal</h3>
+        <p>Publicar 9‑sep — HSBC (5‑ago), BBVA/Banamex y el CCE, que ya advirtió por "apretón fiscal" (Reforma), tienen postura previa citable sin esperar declaraciones nuevas.</p>
+      </div>
 
-    <div class="tbl-wrap">
-      <table>
-        <caption>Ya circulando para 2027 (4‑ago – 3‑sep‑2026)</caption>
-        <thead><tr><th>Medio</th><th>Hallazgo</th><th>Fecha</th></tr></thead>
-        <tbody>
-          <tr><td>Proceso</td><td><a href="https://www.proceso.com.mx/economia/2026/8/4/paquete-economico-2027-sera-la-prueba-mas-dificil-por-la-deuda-y-pemex-imef-377371.html" target="_blank" rel="noopener">IMEF: será "la prueba más difícil" por deuda y Pemex</a></td><td class="num">4‑ago</td></tr>
-          <tr><td>El Financiero</td><td><a href="https://www.elfinanciero.com.mx/economia/2026/08/17/paquete-economico-2027-gastar-mejor-y-evitar-el-riesgo-crediticio-retos-del-presupuesto/" target="_blank" rel="noopener">Gastar mejor y evitar el riesgo crediticio</a></td><td class="num">17‑ago</td></tr>
-          <tr><td>La Jornada</td><td><a href="https://www.jornada.com.mx/2026/08/28/economia/019n1eco?partner=rss" target="_blank" rel="noopener">IP y analistas esperan paquete "responsable"</a></td><td class="num">28‑ago</td></tr>
-          <tr><td>La Jornada</td><td><a href="https://www.jornada.com.mx/2026/08/30/economia/hacienda-buscara-balancear-la-base-tributaria-para-2027-recaudaciones-alcanzaron-record-de-156-del-pib" target="_blank" rel="noopener">SHCP: recaudación récord de 15,6% del PIB</a></td><td class="num">30‑ago</td></tr>
-          <tr><td>Potosinoticias</td><td><a href="https://potosinoticias.com/2026/09/01/buscan-elevar-de-8-a-20-el-ieps-a-la-comida-chatarra-rumbo-al-paquete-economico-2027/" target="_blank" rel="noopener">Buscan elevar de 8% a 20% el IEPS a la comida chatarra</a></td><td class="num">1‑sep</td></tr>
-          <tr><td>Excélsior</td><td><a href="https://www.excelsior.com.mx/nacional/paquete-economico-2027-sera-responsable-mantendra-inversion-bienestar-salud-y-educacion-sheinbaum" target="_blank" rel="noopener">Sheinbaum: será "responsable"</a></td><td class="num">2‑sep</td></tr>
-          <tr><td>La Jornada</td><td><a href="https://www.jornada.com.mx/2026/09/02/economia/018n1eco?partner=rss" target="_blank" rel="noopener">Diputados van por más impuestos a cervezas y contra elusión del ISR</a></td><td class="num">2‑sep</td></tr>
-          <tr><td>Expansión</td><td><a href="https://expansion.mx/economia/2026/09/02/paquete-economico-2027-grado-inversion-mexico" target="_blank" rel="noopener">Meta de déficit 3,5% vs. 3,7–4,3% que calculan Citi/BNP Paribas</a></td><td class="num">2‑sep</td></tr>
-          <tr><td>El Financiero</td><td><a href="https://www.elfinanciero.com.mx/empresas/2026/09/02/la-chelita-podria-salir-mas-cara-diputados-plantean-subir-impuestos-a-la-cerveza-para-el-2027/" target="_blank" rel="noopener">Diputados plantean subir impuesto a la cerveza</a></td><td class="num">2‑sep</td></tr>
-          <tr><td>Reforma</td><td><a href="https://www.reforma.com/alertan-empresas-de-apreton-fiscal/ar3261829" target="_blank" rel="noopener">Alertan empresas de "apretón fiscal"</a> (CCE)</td><td class="num">ago‑sep</td></tr>
-          <tr><td>Excélsior</td><td><a href="https://www.excelsior.com.mx/nacional/van-contra-huachicol-fiscal-sheinbaum-anuncia-trazabilidad-ieps-combustibles" target="_blank" rel="noopener">Sheinbaum anuncia trazabilidad del IEPS contra huachicol fiscal</a></td><td class="num">3‑sep</td></tr>
-          <tr><td>Excélsior</td><td><a href="https://www.excelsior.com.mx/nacional/no-hay-acuerdo-para-gravar-cerveza-sopas-instantaneas-recula-altamirano" target="_blank" rel="noopener">Diputado se retracta: "no existe acuerdo alguno"</a></td><td class="num">3‑sep</td></tr>
-        </tbody>
-      </table>
-    </div>
+      <div class="topic">
+        <h3><span class="pill news">News</span>¿Qué dicen Fitch, Moody's y S&amp;P del grado de inversión de México tras el paquete 2027?</h3>
+        <p>No forzar antes de que exista la nota real: en 2026, S&amp;P salió el mismo 8‑sep, Fitch tardó ~15 días (23‑sep). Tener el borrador listo, publicar cuando salga cada una.</p>
+      </div>
 
-    <p class="note">Cifra de cerveza mejor corroborada: $6.500 mdp (Forbes México, Alto Nivel) — El Financiero citó $7.000 mdp. IMCO y México Cómo Vamos (think tanks, no medios) también publicaron análisis técnico del ciclo 2026 el mismo 8‑sep, útiles como respaldo para la nota de Zenyazen. El Economista no se pudo verificar en 3 intentos — bloquea el acceso de forma consistente.</p>
-  </section>
+      <div class="topic">
+        <h3><span class="pill search">Search</span>Qué le espera al paquete económico 2027 en el Congreso: el calendario hasta su aprobación final</h3>
+        <p>Fecha ya previsible, se puede programar desde ahora — una nota por hito, no una sola genérica.</p>
+      </div>
 
-  <footer>
-    <strong>Pendientes</strong>
+      <div class="table-wrap">
+        <table>
+          <caption>Calendario 2026 (referencia)</caption>
+          <thead><tr><th>Hito</th><th>Fecha</th></tr></thead>
+          <tbody>
+            <tr><td>Presentación pública / mañanera</td><td class="num">9‑sep</td></tr>
+            <tr><td>Aprobación en Diputados</td><td class="num">~17‑oct</td></tr>
+            <tr><td>Turno al Senado</td><td class="num">~19–21‑oct</td></tr>
+            <tr><td>Aprobación final</td><td class="num">~28‑oct</td></tr>
+            <tr><td>Publicación en Diario Oficial / cuotas definitivas</td><td class="num">~27‑dic</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="competencia">
+      <div class="section-head">
+        <span class="section-num">04</span>
+        <h2>Competencia</h2>
+      </div>
+      <p class="prose lede">Qué hicieron 8 medios mexicanos en el ciclo 2026 completo, y qué ya están publicando para 2027.</p>
+
+      <div class="table-wrap">
+        <table>
+          <caption>2026 — el ciclo comparable más reciente (2025 se entregó en noviembre por transición de gobierno)</caption>
+          <thead><tr><th>Medio</th><th>Momento</th><th>Titular</th><th>Fecha</th></tr></thead>
+          <tbody>
+            <tr><td>Expansión</td><td>Antes</td><td><a href="https://expansion.mx/economia/2025/09/07/que-es-el-paquete-economico-y-por-que-es-importarte" target="_blank" rel="noopener">¿Qué es el Paquete Económico 2026 y por qué es importante?</a></td><td class="num">7‑sep</td></tr>
+            <tr><td>El Financiero</td><td>Durante · blog en vivo</td><td><a href="https://www.elfinanciero.com.mx/economia/2025/09/08/paquete-economico-2026-presupuesto-sigue-la-entrega-al-congreso-hoy-en-vivo/" target="_blank" rel="noopener">Sheinbaum revela el Paquete Económico 2026… EN VIVO</a></td><td class="num">8‑sep</td></tr>
+            <tr><td>El Universal</td><td>Durante · Pemex</td><td><a href="https://www.eluniversal.com.mx/cartera/paquete-economico-2026-asigna-mega-presupuesto-para-pemex-es-un-aumento-en-terminos-reales-del-7/" target="_blank" rel="noopener">Asigna mega presupuesto para Pemex: +7% real</a></td><td class="num">8‑sep</td></tr>
+            <tr><td>El Financiero</td><td>Durante · impuestos saludables</td><td><a href="https://www.elfinanciero.com.mx/economia/2025/09/09/paquete-economico-2026-que-son-los-impuestos-saludables-aumento-de-precio-a-refrescos-cigarros-videojuegos-y-casas-de-apuestas/" target="_blank" rel="noopener">¿Qué son los nuevos "impuestos saludables"?</a></td><td class="num">9‑sep</td></tr>
+            <tr><td>El Financiero</td><td>Durante · social/servicio</td><td><a href="https://www.elfinanciero.com.mx/economia/2025/09/08/aumento-programas-y-pension-bienestar-paquete-economico-2026-de-cuanto-es-la-inversion/" target="_blank" rel="noopener">Pensión Bienestar: ¿cuánto dinero recibirá el programa?</a></td><td class="num">8‑sep</td></tr>
+            <tr><td>El Financiero</td><td>Después · precios/bolsillo</td><td><a href="https://www.elfinanciero.com.mx/economia/2025/12/27/de-refrescos-a-museos-estos-son-los-impuestos-que-suben-de-precio-en-2026-y-pegaran-a-tu-cartera/" target="_blank" rel="noopener">De refrescos a museos: pegarán a tu cartera</a> (+7 medios más hicieron su versión)</td><td class="num">27‑dic</td></tr>
+            <tr><td>El Financiero</td><td>Después · calificadoras</td><td><a href="https://www.elfinanciero.com.mx/economia/2025/09/23/paquete-economico-2026-fitch-preve-que-la-consolidacion-fiscal-sera-mas-dificil-sin-mas-ingresos/" target="_blank" rel="noopener">Fitch prevé que la consolidación fiscal será más difícil</a></td><td class="num">23‑sep</td></tr>
+            <tr><td>México Evalúa</td><td>Después · análisis</td><td><a href="https://numerosdeerario.mexicoevalua.org/2025/09/18/cobraran-mas-impuestos-en-2026-para-apoyar-a-pemex/" target="_blank" rel="noopener">Cobrarán más impuestos en 2026 para apoyar a Pemex</a></td><td class="num">18‑sep</td></tr>
+            <tr><td>Expansión</td><td>Después · Congreso</td><td>Senado aprueba nuevos impuestos a refrescos, tabaco y videojuegos</td><td class="num">28‑oct</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <caption>Ya circulando para 2027 (4‑ago – 3‑sep‑2026)</caption>
+          <thead><tr><th>Medio</th><th>Hallazgo</th><th>Fecha</th></tr></thead>
+          <tbody>
+            <tr><td>Proceso</td><td><a href="https://www.proceso.com.mx/economia/2026/8/4/paquete-economico-2027-sera-la-prueba-mas-dificil-por-la-deuda-y-pemex-imef-377371.html" target="_blank" rel="noopener">IMEF: será "la prueba más difícil" por deuda y Pemex</a></td><td class="num">4‑ago</td></tr>
+            <tr><td>El Financiero</td><td><a href="https://www.elfinanciero.com.mx/economia/2026/08/17/paquete-economico-2027-gastar-mejor-y-evitar-el-riesgo-crediticio-retos-del-presupuesto/" target="_blank" rel="noopener">Gastar mejor y evitar el riesgo crediticio</a></td><td class="num">17‑ago</td></tr>
+            <tr><td>La Jornada</td><td><a href="https://www.jornada.com.mx/2026/08/28/economia/019n1eco?partner=rss" target="_blank" rel="noopener">IP y analistas esperan paquete "responsable"</a></td><td class="num">28‑ago</td></tr>
+            <tr><td>La Jornada</td><td><a href="https://www.jornada.com.mx/2026/08/30/economia/hacienda-buscara-balancear-la-base-tributaria-para-2027-recaudaciones-alcanzaron-record-de-156-del-pib" target="_blank" rel="noopener">SHCP: recaudación récord de 15,6% del PIB</a></td><td class="num">30‑ago</td></tr>
+            <tr><td>Potosinoticias</td><td><a href="https://potosinoticias.com/2026/09/01/buscan-elevar-de-8-a-20-el-ieps-a-la-comida-chatarra-rumbo-al-paquete-economico-2027/" target="_blank" rel="noopener">Buscan elevar de 8% a 20% el IEPS a la comida chatarra</a></td><td class="num">1‑sep</td></tr>
+            <tr><td>Excélsior</td><td><a href="https://www.excelsior.com.mx/nacional/paquete-economico-2027-sera-responsable-mantendra-inversion-bienestar-salud-y-educacion-sheinbaum" target="_blank" rel="noopener">Sheinbaum: será "responsable"</a></td><td class="num">2‑sep</td></tr>
+            <tr><td>La Jornada</td><td><a href="https://www.jornada.com.mx/2026/09/02/economia/018n1eco?partner=rss" target="_blank" rel="noopener">Diputados van por más impuestos a cervezas y contra elusión del ISR</a></td><td class="num">2‑sep</td></tr>
+            <tr><td>Expansión</td><td><a href="https://expansion.mx/economia/2026/09/02/paquete-economico-2027-grado-inversion-mexico" target="_blank" rel="noopener">Meta de déficit 3,5% vs. 3,7–4,3% que calculan Citi/BNP Paribas</a></td><td class="num">2‑sep</td></tr>
+            <tr><td>El Financiero</td><td><a href="https://www.elfinanciero.com.mx/empresas/2026/09/02/la-chelita-podria-salir-mas-cara-diputados-plantean-subir-impuestos-a-la-cerveza-para-el-2027/" target="_blank" rel="noopener">Diputados plantean subir impuesto a la cerveza</a></td><td class="num">2‑sep</td></tr>
+            <tr><td>Reforma</td><td><a href="https://www.reforma.com/alertan-empresas-de-apreton-fiscal/ar3261829" target="_blank" rel="noopener">Alertan empresas de "apretón fiscal"</a> (CCE)</td><td class="num">ago‑sep</td></tr>
+            <tr><td>Excélsior</td><td><a href="https://www.excelsior.com.mx/nacional/van-contra-huachicol-fiscal-sheinbaum-anuncia-trazabilidad-ieps-combustibles" target="_blank" rel="noopener">Sheinbaum anuncia trazabilidad del IEPS contra huachicol fiscal</a></td><td class="num">3‑sep</td></tr>
+            <tr><td>Excélsior</td><td><a href="https://www.excelsior.com.mx/nacional/no-hay-acuerdo-para-gravar-cerveza-sopas-instantaneas-recula-altamirano" target="_blank" rel="noopener">Diputado se retracta: "no existe acuerdo alguno"</a></td><td class="num">3‑sep</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p class="note">Cifra de cerveza mejor corroborada: $6.500 mdp (Forbes México, Alto Nivel) — El Financiero citó $7.000 mdp. IMCO y México Cómo Vamos (think tanks, no medios) también publicaron análisis técnico del ciclo 2026 el mismo 8‑sep. El Economista no se pudo verificar en 3 intentos — bloquea el acceso de forma consistente.</p>
+    </section>
+
+  </main>
+</div>
+
+<footer class="wrap">
+  <div class="prose">
+    <strong style="color:var(--ink);">Pendientes</strong>
     <ul>
       <li>Jimena confirma el encuadre de Pensión Bienestar.</li>
       <li>Verificar calificación crediticia de otros países LatAm antes de la punta regional.</li>
-      <li>Agendar ya la pieza de "precios actualizados" para diciembre — no es tarea de septiembre, pero se pierde si no se planea ahora.</li>
+      <li>Agendar ya la pieza de "precios actualizados" para diciembre.</li>
     </ul>
-    <p style="margin-top:12px;">Armado 3–4‑sep‑2026. Cifras del paquete 2027 son propuestas hasta la entrega real del 8‑sep.</p>
-  </footer>
-
-</div>
+    <p style="margin-top:1rem;">Armado 3–4‑sep‑2026. Cifras del paquete 2027 son propuestas hasta la entrega real del 8‑sep.</p>
+  </div>
+</footer>
